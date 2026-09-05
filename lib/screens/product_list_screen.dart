@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:smart_search/providers/product_list_provider.dart';
+
+class ProductListScreen extends ConsumerWidget {
+
+  const ProductListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final products = ref.watch(productListProvider);
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Liste des produits'),
+      ),
+      body: ListView.builder (
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          final product = products[index];
+          return ListTile(
+            title: Text(product.name),
+            subtitle: Text(product.category),
+            trailing: IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () {
+                ref.read(productListProvider.notifier).deleteProduct(product.id);
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
