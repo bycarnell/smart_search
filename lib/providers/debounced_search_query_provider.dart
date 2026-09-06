@@ -5,6 +5,7 @@ import 'package:smart_search/providers/search_query_provider.dart';
 final debouncedSearchQueryProvider = StreamProvider<String>((ref) {
   final controller = StreamController<String>();
   Timer? timer;
+  controller.add(''); // valeur initiale immédiate, indépendante de ref.listen
 
   ref.listen(searchQueryProvider, (previous, next) {
     // annule le timer précédent s'il existe 
