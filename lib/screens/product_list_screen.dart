@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:smart_search/providers/filtered_products_provider.dart';
 import 'package:smart_search/providers/product_list_provider.dart';
 import 'package:smart_search/providers/search_query_provider.dart';
 
@@ -9,7 +10,7 @@ class ProductListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final products = ref.watch(productListProvider);
+    final products = ref.watch(filteredProductsProvider);
     
     return Scaffold(
       appBar: AppBar(
@@ -20,6 +21,7 @@ class ProductListScreen extends ConsumerWidget {
           TextField(
             onChanged: (value) => ref.read(searchQueryProvider.notifier).state = value,
           ),
+          Text('${products.length} résultat(s)'),
           Expanded(
             child: ListView.builder (
               itemCount: products.length,
