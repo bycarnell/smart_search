@@ -13,9 +13,23 @@ class ProductListScreen extends ConsumerWidget {
       appBar: AppBar(title: const Text('Liste des produits')),
       body: Column(
         children: [
-          TextField(
-            onChanged: (value) =>
-                ref.read(searchQueryProvider.notifier).state = value,
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: TextField(
+              onChanged: (value) =>
+                  ref.read(searchQueryProvider.notifier).state = value,
+              decoration: InputDecoration(
+                hintText: 'Rechercher un produit ou une catégorie',
+                prefixIcon: const Icon(Icons.search),
+                filled: true,
+                fillColor: Colors.grey.shade100,
+                contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
           ),
           Consumer(
             builder: (context, ref, child) {
