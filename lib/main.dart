@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smart_search/models/product.dart';
+import 'package:smart_search/models/product_adapter.dart';
 import 'package:smart_search/screens/product_list_screen.dart';
 
 void main() async{

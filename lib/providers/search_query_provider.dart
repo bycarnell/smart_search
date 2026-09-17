@@ -1,4 +1,13 @@
-import 'package:flutter_riverpod/legacy.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+part 'search_query_provider.g.dart';
 
-final searchQueryProvider = StateProvider<String>((ref) => '');
+@riverpod
+class SearchQuery extends _$SearchQuery {
+  @override
+  String build() => '';
+
+  void update(String value) {
+    state = value;
+  }
+}

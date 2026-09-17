@@ -5,9 +5,9 @@ import 'package:smart_search/providers/product_list_provider.dart';
 import 'package:smart_search/providers/debounced_search_query_provider.dart';
 import 'package:smart_search/providers/filtered_products_provider.dart';
 
-class FakeProductListNotifier extends ProductListNotifier {
+class FakeProductList extends ProductList {
   final List<Product> fakeProducts;
-  FakeProductListNotifier(this.fakeProducts);
+  FakeProductList(this.fakeProducts);
 
   @override
   List<Product> build() => fakeProducts;
@@ -23,7 +23,7 @@ void main() {
 
     final container = ProviderContainer(
       overrides: [
-        productListProvider.overrideWith(() => FakeProductListNotifier(testProducts)),
+        productListProvider.overrideWith(() => FakeProductList(testProducts)),
         debouncedSearchQueryProvider.overrideWithValue(const AsyncData("électronique")),
       ],
     );

@@ -17,7 +17,7 @@ class ProductListScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(12),
             child: TextField(
               onChanged: (value) =>
-                  ref.read(searchQueryProvider.notifier).state = value,
+                  ref.read(searchQueryProvider.notifier).update(value),
               decoration: InputDecoration(
                 hintText: 'Rechercher un produit ou une catégorie',
                 prefixIcon: const Icon(Icons.search),

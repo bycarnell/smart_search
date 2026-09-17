@@ -1,10 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-
-part of 'product.dart';
-
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
+import 'package:hive/hive.dart';
+import 'package:smart_search/models/product.dart';
 
 class ProductAdapter extends TypeAdapter<Product> {
   @override
@@ -14,7 +9,7 @@ class ProductAdapter extends TypeAdapter<Product> {
   Product read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Product(
       id: fields[0] as String,
@@ -34,14 +29,4 @@ class ProductAdapter extends TypeAdapter<Product> {
       ..writeByte(2)
       ..write(obj.category);
   }
-
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ProductAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
 }

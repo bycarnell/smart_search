@@ -1,8 +1,12 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+// lib/providers/product_list_provider.dart
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:smart_search/models/product.dart';
 import 'package:smart_search/providers/hive_box_provider.dart';
 
-class ProductListNotifier extends Notifier<List<Product>> {
+part 'product_list_provider.g.dart';
+
+@riverpod
+class ProductList extends _$ProductList {
   @override
   List<Product> build() {
     final box = ref.watch(hiveBoxProvider);
@@ -39,7 +43,3 @@ class ProductListNotifier extends Notifier<List<Product>> {
     state = state.where((p) => p.id != id).toList();
   }
 }
-
-final productListProvider =
-    NotifierProvider<ProductListNotifier, List<Product>>(ProductListNotifier.new);
-    
